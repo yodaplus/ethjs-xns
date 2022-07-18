@@ -19,6 +19,10 @@ const BadCharacterError = new Error("Illegal Character for ENS.");
 class Ens {
   constructor(opts = {}) {
     const { provider, network } = opts;
+    console.log(
+      "🚀 ~ file: index.js ~ line 22 ~ Ens ~ constructor ~ network",
+      network
+    );
     let { registryAddress } = opts;
 
     // Validations
@@ -42,6 +46,10 @@ class Ens {
     this.Registry = this.contract(registryAbi);
     if (!registryAddress && network) {
       registryAddress = "0x" + networkMap[network]["registry"];
+      console.log(
+        "🚀 ~ file: index.js ~ line 45 ~ Ens ~ constructor ~ registryAddress",
+        registryAddress
+      );
     }
     this.registry = this.Registry.at(registryAddress);
 
