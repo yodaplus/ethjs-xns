@@ -144,7 +144,7 @@ class Ens {
           resolver
         );
 
-        return resolver.addr(node);
+        return resolver.addr(node, 60);
       })
       .then((result) => {
         console.log(
