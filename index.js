@@ -125,6 +125,7 @@ class Ens {
         resolverAddress
       );
       if (resolverAddress === emptyAddr) {
+        console.log("NOTFOUNDERROR");
         throw NotFoundError;
       }
       return resolverAddress;
