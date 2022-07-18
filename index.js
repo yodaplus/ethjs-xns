@@ -58,7 +58,12 @@ class Ens {
   }
 
   lookup(name = "") {
+    console.log("🚀 ~ file: index.js ~ line 61 ~ Ens ~ lookup ~ name", name);
     return this.getNamehash(name).then((node) => {
+      console.log(
+        "🚀 ~ file: index.js ~ line 63 ~ Ens ~ returnthis.getNamehash ~ node",
+        node
+      );
       if (node === emptyHash) {
         return Promise.reject(NotFoundError);
       }
@@ -125,6 +130,10 @@ class Ens {
   resolveAddressForNode(node) {
     return this.getResolverForNode(node)
       .then((resolver) => {
+        console.log(
+          "🚀 ~ file: index.js ~ line 130 ~ Ens ~ .then ~ resolver",
+          resolver
+        );
         return resolver.addr(node);
       })
       .then((result) => result[0]);
