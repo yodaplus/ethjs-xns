@@ -120,6 +120,10 @@ class Ens {
   getResolverAddressForNode(node) {
     return this.registry.resolver(node).then((result) => {
       const resolverAddress = result[0];
+      console.log(
+        "🚀 ~ file: index.js ~ line 123 ~ Ens ~ returnthis.registry.resolver ~ resolverAddress",
+        resolverAddress
+      );
       if (resolverAddress === emptyAddr) {
         throw NotFoundError;
       }
