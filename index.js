@@ -113,6 +113,10 @@ class Ens {
     }
 
     return this.getResolverAddressForNode(node).then((resolverAddress) => {
+      console.log(
+        "🚀 ~ file: index.js ~ line 116 ~ Ens ~ returnthis.getResolverAddressForNode ~ resolverAddress",
+        resolverAddress
+      );
       return this.Resolver.at(resolverAddress);
     });
   }
@@ -139,9 +143,16 @@ class Ens {
           "🚀 ~ file: index.js ~ line 130 ~ Ens ~ .then ~ resolver",
           resolver
         );
+
         return resolver.addr(node);
       })
-      .then((result) => result[0]);
+      .then((result) => {
+        console.log(
+          "🚀 ~ file: index.js ~ line 150 ~ Ens ~ .then ~ result",
+          result
+        );
+        return result[0];
+      });
   }
 
   reverse(address) {
