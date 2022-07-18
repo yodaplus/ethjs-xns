@@ -41,7 +41,7 @@ class Ens {
     // Link to Registry
     this.Registry = this.contract(registryAbi);
     if (!registryAddress && network) {
-      registryAddress = "0x" + networkMap[network];
+      registryAddress = "0x" + networkMap[network]["registry"];
     }
     this.registry = this.Registry.at(registryAddress);
 
