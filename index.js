@@ -77,7 +77,7 @@ class Ens {
         "🚀 ~ file: index.js ~ line 63 ~ Ens ~ returnthis.getNamehash ~ e",
         e
       );
-      return Promise.reject(e);
+      throw e;
     }
   }
 
@@ -155,7 +155,7 @@ class Ens {
         "🚀 ~ file: index.js ~ line 128 ~ Ens ~ returnthis.registry.resolver ~ e",
         e
       );
-      return Promise.reject(e);
+      throw e;
     }
   }
 
