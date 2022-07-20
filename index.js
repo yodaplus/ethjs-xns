@@ -59,18 +59,26 @@ class Ens {
 
   lookup(name = "") {
     console.log("🚀 ~ file: index.js ~ line 61 ~ Ens ~ lookup ~ name", name);
-    return this.getNamehash(name).then((node) => {
+    try {
+      return this.getNamehash(name).then((node) => {
+        console.log(
+          "🚀 ~ file: index.js ~ line 63 ~ Ens ~ returnthis.getNamehash ~ node",
+          node
+        );
+        if (node === emptyHash) {
+          console.log("NOTFOUNDERROR-EMPTYHASH");
+          return Promise.reject(NotFoundError);
+        }
+        console.log("resolveAddressForNode");
+        return this.resolveAddressForNode(node);
+      });
+    } catch (e) {
       console.log(
-        "🚀 ~ file: index.js ~ line 63 ~ Ens ~ returnthis.getNamehash ~ node",
-        node
+        "🚀 ~ file: index.js ~ line 63 ~ Ens ~ returnthis.getNamehash ~ e",
+        e
       );
-      if (node === emptyHash) {
-        console.log("NOTFOUNDERROR-EMPTYHASH");
-        return Promise.reject(NotFoundError);
-      }
-      console.log("resolveAddressForNode");
-      return this.resolveAddressForNode(node);
-    });
+      return Promise.reject(e);
+    }
   }
 
   getNamehash(name) {
