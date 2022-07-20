@@ -65,8 +65,10 @@ class Ens {
         node
       );
       if (node === emptyHash) {
+        console.log("NOTFOUNDERROR-EMPTYHASH");
         return Promise.reject(NotFoundError);
       }
+      console.log("resolveAddressForNode");
       return this.resolveAddressForNode(node);
     });
   }
@@ -123,6 +125,10 @@ class Ens {
 
   getResolverAddressForNode(node) {
     return this.registry.resolver(node).then((result) => {
+      console.log(
+        "🚀 ~ file: index.js ~ line 128 ~ Ens ~ returnthis.registry.resolver ~ result",
+        result
+      );
       const resolverAddress = result[0];
       console.log(
         "🚀 ~ file: index.js ~ line 123 ~ Ens ~ returnthis.registry.resolver ~ resolverAddress",
