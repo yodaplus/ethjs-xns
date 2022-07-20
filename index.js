@@ -124,6 +124,7 @@ class Ens {
   }
 
   getResolverAddressForNode(node) {
+    console.log("CHECKING getResolverAddressForNode");
     return this.registry.resolver(node).then((result) => {
       console.log(
         "🚀 ~ file: index.js ~ line 128 ~ Ens ~ returnthis.registry.resolver ~ result",
@@ -143,6 +144,7 @@ class Ens {
   }
 
   resolveAddressForNode(node) {
+    console.log("CHECKING resolveAddressForNode");
     return this.getResolverForNode(node)
       .then((resolver) => {
         console.log(
