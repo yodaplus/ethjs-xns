@@ -124,23 +124,31 @@ class Ens {
   }
 
   getResolverAddressForNode(node) {
-    console.log("CHECKING getResolverAddressForNode");
-    return this.registry.resolver(node).then((result) => {
-      console.log(
-        "🚀 ~ file: index.js ~ line 128 ~ Ens ~ returnthis.registry.resolver ~ result",
-        result
+    console.log("CHECKING getResolverAddressForNode", node);
+    try {
+      return this.registry.resolver(node).then((result) => {
+        console.log(
+          "🚀 ~ file: index.js ~ line 128 ~ Ens ~ returnthis.registry.resolver ~ result",
+          result
+        );
+        const resolverAddress = result[0];
+        console.log(
+          "🚀 ~ file: index.js ~ line 123 ~ Ens ~ returnthis.registry.resolver ~ resolverAddress",
+          resolverAddress
+        );
+        if (resolverAddress === emptyAddr) {
+          console.log("NOTFOUNDERROR");
+          throw NotFoundError;
+        }
+        return resolverAddress;
+      });
+    } catch (e) {
+      console.error(
+        "🚀 ~ file: index.js ~ line 128 ~ Ens ~ returnthis.registry.resolver ~ e",
+        e
       );
-      const resolverAddress = result[0];
-      console.log(
-        "🚀 ~ file: index.js ~ line 123 ~ Ens ~ returnthis.registry.resolver ~ resolverAddress",
-        resolverAddress
-      );
-      if (resolverAddress === emptyAddr) {
-        console.log("NOTFOUNDERROR");
-        throw NotFoundError;
-      }
-      return resolverAddress;
-    });
+      return Promise.reject(e);
+    }
   }
 
   resolveAddressForNode(node) {
